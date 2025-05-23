@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation Sidebar -->
+        <nav class="sidebar">
+            <div class="profile-summary">
+                <div class="profile-photo-skeleton skeleton">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h1 class="skeleton skeleton-text" id="profile-name"></h1>
+                <p class="skeleton skeleton-text" id="profile-title"></p>
+            </div>
+            
+            <div class="nav-group">
+                <h3 class="nav-group-title">Personal</h3>
+                <ul class="nav-links">
+                    <li><a href="#profile" class="nav-link active" data-tooltip="View my personal information"><i class="fas fa-user"></i> <span>Profile</span></a></li>
+                    <li><a href="#resume" class="nav-link" data-tooltip="Download my resume"><i class="fas fa-file-alt"></i> <span>Resume</span></a></li>
+                    <li><a href="#languages" class="nav-link" data-tooltip="See languages I speak"><i class="fas fa-language"></i> <span>Languages</span></a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-group">
+                <h3 class="nav-group-title">Professional</h3>
+                <ul class="nav-links">
+                    <li><a href="#skills" class="nav-link" data-tooltip="View my technical skills"><i class="fas fa-code"></i> <span>Skills</span></a></li>
+                    <li><a href="#experience" class="nav-link" data-tooltip="My work experience"><i class="fas fa-briefcase"></i> <span>Experience</span></a></li>
+                    <li><a href="#projects" class="nav-link" data-tooltip="My completed projects"><i class="fas fa-project-diagram"></i> <span>Projects</span></a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-group">
+                <h3 class="nav-group-title">Achievements</h3>
+                <ul class="nav-links">
+                    <li><a href="#research" class="nav-link" data-tooltip="My research work"><i class="fas fa-flask"></i> <span>Research</span></a></li>
+                    <li><a href="#certificates" class="nav-link" data-tooltip="My certifications"><i class="fas fa-certificate"></i> <span>Certificates</span></a></li>
+                    <li><a href="#opensource" class="nav-link" data-tooltip="Open source contributions"><i class="fab fa-github"></i> <span>Open Source</span></a></li>
+                    <li><a href="#awards" class="nav-link" data-tooltip="Awards received"><i class="fas fa-trophy"></i> <span>Awards</span></a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-group">
+                <h3 class="nav-group-title">More</h3>
+                <ul class="nav-links">
+                    <li><a href="#timeline" class="nav-link" data-tooltip="Career timeline"><i class="fas fa-history"></i> <span>Timeline</span></a></li>
+                    <li><a href="#gallery" class="nav-link" data-tooltip="Project gallery"><i class="fas fa-images"></i> <span>Gallery</span></a></li>
+                    <li><a href="#social" class="nav-link" data-tooltip="Connect with me"><i class="fas fa-share-alt"></i> <span>Social</span></a></li>
+                </ul>
+            </div>
+
+            <div class="theme-toggle">
+                <button id="theme-switcher"><i class="fas fa-moon"></i> Dark Mode</button>
+            </div>
+            
+            <button class="sidebar-toggle" aria-label="Toggle sidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            <!-- Loading State -->
+            <div id="loading" class="loading-state">
+                <div class="spinner"></div>
+                <p>Loading portfolio...</p>
+            </div>
+            
+            <!-- Error State -->
+            <div id="error" class="error-state" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p id="error-message"></p>
+                <button id="retry-button" class="btn-primary">Try Again</button>
+            </div>
+            
+            <!-- Welcome Message (shown briefly before content loads) -->
+            <div id="welcome-message" class="welcome-message">
+                <h2>Welcome to My Portfolio</h2>
+                <p>Loading my professional details...</p>
+            </div>
+            
+            <!-- Dynamic Content Sections -->
+            <section id="profile" class="content-section" data-aos="fade-up"></section>
+            <section id="resume" class="content-section" data-aos="fade-up"></section>
+            <section id="skills" class="content-section" data-aos="fade-up"></section>
+            <section id="languages" class="content-section" data-aos="fade-up"></section>
+            <section id="experience" class="content-section" data-aos="fade-up"></section>
+            <section id="projects" class="content-section" data-aos="fade-up"></section>
+            <section id="research" class="content-section" data-aos="fade-up"></section>
+            <section id="certificates" class="content-section" data-aos="fade-up"></section>
+            <section id="opensource" class="content-section" data-aos="fade-up"></section>
+            <section id="awards" class="content-section" data-aos="fade-up"></section>
+            <section id="timeline" class="content-section" data-aos="fade-up"></section>
+            <section id="gallery" class="content-section" data-aos="fade-up"></section>
+            <section id="social" class="content-section" data-aos="fade-up"></section>
+        </main>
+    </div>
+
+    <!-- Modal for detailed views -->
+    <div id="detail-modal" class="modal">
+        <div class="modal-content" data-aos="zoom-in">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- PDF Export Button (Future Feature) -->
+    <button id="export-pdf" class="pdf-export-btn" title="Export as PDF">
+        <i class="fas fa-file-pdf"></i>
+    </button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
